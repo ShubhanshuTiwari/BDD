@@ -1,4 +1,4 @@
-package ScenarioOutlineFeature;
+package scenarioDataTableFeature;
 
 
 
@@ -12,7 +12,7 @@ import cucumber.api.junit.Cucumber;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin= {"html:reports"},features="src/test/resources/ScenarioOutlineFeature")
+@CucumberOptions(plugin= {"html:reports"},features={"src/test/resources/scenarioDataTableFeature"})
 public class RunCucumberTest {
 
 @Test

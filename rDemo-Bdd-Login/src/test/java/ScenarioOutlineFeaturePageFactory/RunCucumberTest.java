@@ -1,4 +1,4 @@
-package ScenarioOutlineFeature;
+package ScenarioOutlineFeaturePageFactory;
 
 
 

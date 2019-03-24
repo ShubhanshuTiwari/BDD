@@ -1,4 +1,4 @@
-package loginfeature;
+package loginfeaturepagefactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,6 +18,7 @@ private WebDriver driver;
 	
 private LoginPageFactory lpf;
 	
+	
 
 	@Given("^open the Firefox and launch the application$")
 	public void open_the_Firefox_and_launch_the_application() throws Exception {
@@ -26,6 +27,7 @@ private LoginPageFactory lpf;
 		String projectLocation=System.getProperty("user.dir");
 		System.setProperty("webdriver.chrome.driver", projectLocation+"\\lib\\chromedriver.exe");
 		driver= new ChromeDriver();
+		lpf=new LoginPageFactory(driver);
 		driver.get("file:///E:/HotelBooking.html");
 		
 		
@@ -37,24 +39,27 @@ private LoginPageFactory lpf;
 	    // Write code here that turns the phrase above into concrete actions
 	    /*throw new PendingException();*/
 		//Find Username textbox and enter value
-				driver.findElement(By.name("txtUName")).sendKeys("Amit123");
-				
+		/* driver.findElement(By.name("txtUName")).sendKeys("Amit123"); */
+			lpf.setName("Amit123");	
+			
 				
 				//Find password textbox and enter value
-				driver.findElement(By.name("txtPwd")).sendKeys("igate");
+		/* driver.findElement(By.name("txtPwd")).sendKeys("igate"); */
+				lpf.setPwd("igate");
 				Thread.sleep(1000);
 				
 				//Find confirm password textbox and enter value
-						driver.findElement(By.id("txtConfPassword")).sendKeys("igate");
-						Thread.sleep(1000);
+		/* driver.findElement(By.id("txtConfPassword")).sendKeys("igate"); */
+				lpf.setCnfPwd("igate");
+				Thread.sleep(1000);
 	}
 
 	@Then("^Reset the credential$")
 	public void reset_the_credential() throws Exception {
 	    // Write code here that turns the phrase above into concrete actions
 	    /*throw new PendingException();*/
-		driver.findElement(By.name("reset")).click();
-		
+		/* driver.findElement(By.name("reset")).click(); */
+		lpf.setBtn();
 	}
 
 	

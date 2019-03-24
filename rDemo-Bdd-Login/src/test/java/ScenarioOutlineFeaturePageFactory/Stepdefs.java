@@ -1,4 +1,4 @@
-package ScenarioOutlineFeature;
+package ScenarioOutlineFeaturePageFactory;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +13,7 @@ import pagefactorybean.LoginPageFactory;
 public class Stepdefs {
 
 	private WebDriver driver;
+	LoginPageFactory lpf;
 
 @Given("^Open the firefox and launch the application$")
 public void open_the_firefox_and_launch_the_application() throws Exception {
@@ -20,15 +21,20 @@ public void open_the_firefox_and_launch_the_application() throws Exception {
 	String projectLocation=System.getProperty("user.dir");
 	System.setProperty("webdriver.chrome.driver", projectLocation+"\\lib\\chromedriver.exe");
 	driver= new ChromeDriver();
+	lpf=new LoginPageFactory(driver);
 	driver.get("file:///E:/HotelBooking.html");
 }
 
 @When("^Enter the Username \"([^\"]*)\" and Password \"([^\"]*)\"$")
 public void enter_the_Username_and_Password(String arg1, String arg2) throws Exception {
     // Write code here that turns the phrase above into concrete actions
-	driver.findElement(By.name("txtUName")).sendKeys(arg1);
-	
-	driver.findElement(By.name("txtPwd")).sendKeys(arg2);
+		/*
+		 * driver.findElement(By.name("txtUName")).sendKeys(arg1);
+		 * 
+		 * driver.findElement(By.name("txtPwd")).sendKeys(arg2); Thread.sleep(1000);
+		 */
+	lpf.setName(arg1);
+	lpf.setPwd(arg2);
 	Thread.sleep(1000);
 }
 
@@ -36,7 +42,9 @@ public void enter_the_Username_and_Password(String arg1, String arg2) throws Exc
 public void submit_the_Credential() throws Exception {
     // Write code here that turns the phrase above into concrete actions
 	Thread.sleep(1000);
-	driver.findElement(By.name("submit")).click();
+lpf.setBtn();
+driver.close();
+
 }
 
 
